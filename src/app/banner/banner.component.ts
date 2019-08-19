@@ -28,7 +28,7 @@ export class BannerComponent implements OnInit {
   }
   post() {
     console.log(this.empForm.value);
-    this.http.post('http://dummy.restapiexample.com/api/v1/create', this.cartForm.value)
+    this.http.post('http://dummy.restapiexample.com/api/v1/create', this.empForm.value)
       .toPromise()
       .then((response) => {
         this.empForm = new FormGroup({
