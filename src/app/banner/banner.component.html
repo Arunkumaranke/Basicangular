@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <h3>Details</h3>
+  <form [formGroup]="cartForm" (submit)="postBook()">
+   
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label>Id</label>
+          <input type="number" class="form-control" formControlName="id" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label>Employee Name</label>
+          <input type="text" class="form-control" formControlName="employee_name" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label>Employee Salary</label>
+          <input type="number" class="form-control" formControlName="employee_salary" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label>Employee Age</label>
+        <input type="number" class="form-control" formControlName="employee_age" />
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label>Image</label>
+        <input type="url" class="form-control" formControlName="profile_image" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <button class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- LIST THE ITEMS -->
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Age</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cart of cartData; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ cart.id }}</td>
+      <td>{{ cart.employee_name }}</td>
+      <td>{{ cart.employee_salary }}</td>
+      <td>{{ cart.employee_age }}</td>
+      <td>{{ cart.profile_image }}</td>
+    
+      <td>
+        <a routerLink="/{ cart.id }" class="btn btn-primary btn-sm">Edit</a>
+        <button (click)="deleteBook(cart.id)" class="btn btn-danger btn-sm">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
