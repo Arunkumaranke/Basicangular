@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-  cartForm;
-  cartData;
+  empForm;
+  empData;
   constructor(public http: HttpClient,public router: Router) { }
 
 
   ngOnInit() {
    
-    this.cartForm = new FormGroup({
+    this.empForm = new FormGroup({
       "id": new FormControl(),
       "employee_name": new FormControl(),
       "employee_salary": new FormControl(),
@@ -26,12 +26,12 @@ export class BannerComponent implements OnInit {
     this.loadData();
 
   }
-  postBook() {
-    console.log(this.cartForm.value);
+  post() {
+    console.log(this.empForm.value);
     this.http.post('http://dummy.restapiexample.com/api/v1/create', this.cartForm.value)
       .toPromise()
       .then((response) => {
-        this.cartForm = new FormGroup({
+        this.empForm = new FormGroup({
           "id": new FormControl(),
           "employee_name": new FormControl(),
           "employee_salary": new FormControl(),
@@ -50,13 +50,13 @@ export class BannerComponent implements OnInit {
     this.http.get('http://dummy.restapiexample.com/api/v1/employees')
       .toPromise()
       .then((response) => {
-        this.cartData = response;
+        this.empData = response;
       }, (error) => {
         console.log(error);
       }
       );
   }
-  deleteBook(id) {
+  delete(id) {
     let result = confirm('Are you sure do you want to delete?');
     if (result == true) {
       console.log(id);

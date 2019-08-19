@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <h3>Details</h3>
-  <form [formGroup]="cartForm" (submit)="postBook()">
+  <form [formGroup]="empForm" (submit)="post()">
    
     <div class="row">
       <div class="col-lg-3">
@@ -62,7 +62,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let cart of cartData; let i = index">
+    <tr *ngFor="let cart of empData; let i = index">
       <th scope="row">{{ i + 1 }}</th>
       <td>{{ cart.id }}</td>
       <td>{{ cart.employee_name }}</td>
@@ -72,7 +72,7 @@
     
       <td>
         <a routerLink="/{ cart.id }" class="btn btn-primary btn-sm">Edit</a>
-        <button (click)="deleteBook(cart.id)" class="btn btn-danger btn-sm">
+        <button (click)="delete(cart.id)" class="btn btn-danger btn-sm">
           Delete
         </button>
       </td>
